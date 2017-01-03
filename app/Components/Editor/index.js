@@ -7,11 +7,12 @@ import {
     View,
     Text,
     TextInput,
-    TouchableHighlight,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native'
 
-import iconfontConf from '../../Utils/conf'
+
+import conf from '../../Utils/conf'
 
 export default class EditorComp extends Component {
     constructor(props) {
@@ -38,6 +39,11 @@ export default class EditorComp extends Component {
                     {this._renderTool('at', 'uniE61A')}
                     {this._renderTool('location', 'uniE61B')}
                 </View>
+                <View style={styles.row}>
+                <TouchableOpacity style={styles.button} onPress={this._userRegister} underlayColor='#99d9f4 '>
+                    <Text style={styles.buttonText}>Submit</Text>
+                </TouchableOpacity>
+                </View>
             </View>
         )
     }
@@ -45,9 +51,9 @@ export default class EditorComp extends Component {
     _renderTool(tool, icon, handle = () => {}) {
         if(this._enableTool(tool)) {
             return (
-                <TouchableHighlight style={styles.tool}>
+                <TouchableOpacity style={styles.tool}>
                     <Text style={styles.toolText}>{conf(icon)}</Text>
-                </TouchableHighlight>
+                </TouchableOpacity>
             )
         }
     }
@@ -100,5 +106,17 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: 'iconfont',
         color: '#666'
+    },
+    buttonText: {
+         fontSize: 18,
+         color: 'white',
+         alignSelf: 'center'
+    },
+    button: {
+         height: 36,
+         backgroundColor: '#48BBEC',
+         borderRadius: 8,
+         alignSelf: 'stretch',
+         justifyContent: 'center'
     }
 })
