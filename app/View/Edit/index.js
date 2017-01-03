@@ -8,8 +8,6 @@ import {
     Alert
 } from 'react-native'
 
-//import styleUtils from '../../Styles'
-//import NavbarComp from '../../Components/NavBar'
 import Editor from '../../Components/Editor'
 
 export default class EditView extends Component{
@@ -29,7 +27,7 @@ export default class EditView extends Component{
             <View style={styles.container}>
                 <Editor
                     onChangeText={this.onChangeText.bind(this)}
-                    placeholder={'What\'s happening'}
+                    placeholder={'Say something...'}
                     text={this.state.text}/>
             </View>
 
@@ -55,7 +53,6 @@ export default class EditView extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        // ...styleUtils.containerBg,
         flexGrow: 1
     }
 })

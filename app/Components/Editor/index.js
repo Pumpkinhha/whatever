@@ -40,7 +40,7 @@ export default class EditorComp extends Component {
                     {this._renderTool('location', 'uniE61B')}
                 </View>
                 <View style={styles.row}>
-                <TouchableOpacity style={styles.button} onPress={this._userRegister} underlayColor='#99d9f4 '>
+                <TouchableOpacity style={styles.button} onPress={this._userRegister} underlayColor='#99d9f4'>
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
                 </View>
