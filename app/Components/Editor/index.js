@@ -11,7 +11,7 @@ import {
     StyleSheet
 } from 'react-native'
 
-import iconfontConf from '../../Utils/conf'
+import conf from '../../Utils/conf'
 
 export default class EditorComp extends Component {
     constructor(props) {
