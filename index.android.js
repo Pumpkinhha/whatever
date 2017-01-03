@@ -49,5 +49,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('Whatever', () => Whatever);
+import Login from './app/View/Login/index';
+AppRegistry.registerComponent('Whatever', () => Login);
