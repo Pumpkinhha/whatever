@@ -1,12 +1,12 @@
 import React, {
-    Component,
-    PropTypes
+   Component,
+   PropTypes
 } from 'react'
 
 import {
-    AppRegistry,
-    StyleSheet,
-    View
+   AppRegistry,
+   StyleSheet,
+   View
 } from 'react-native'
 
 import NavigatorComp from './app/Components/Navigator'
