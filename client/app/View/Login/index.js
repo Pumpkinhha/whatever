@@ -1,6 +1,8 @@
 /**
  * React Native App
  * https://github.com/Pumpkinhha/whatever.git
+ * reference: https://auth0.com/blog/adding-authentication-to-react-native-using-jwt/
+ * http://blog.csdn.net/u012915455/article/details/52594091
  * @flow
  */
 
@@ -15,15 +17,35 @@ import {
 
 } from 'react-native';
 
-export default class App extends Component {
+export default class Login extends Component {
     constructor(props) {
         super(props);
-        this.userName = "";
-        this.password = "";
+        this.state = {
+        username: '',
+        password: '',
+    };
       }
     _userLogin() {
+
     }
      _userRegister() {
+        const { username, password } = this.state;
+        let apiUrl = "http://quiet-harbor-89823.herokuapp.com/register"
+        fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: this.state.username,
+            password: this.state.password
+          })
+        })
+
+    }
+    _userForget() {
+
     }
     render() {
     return (
@@ -33,25 +55,22 @@ export default class App extends Component {
             </View>
             <View style={{marginTop:40}}>
                    <Text style={{color:"#4A90E2",textAlign:'left',marginTop:20}} >UserName</Text>
-                   <TextInput name='Input username' onChangeText={(text) => {
-                       this.username = text;
-                   }}/>
+                   <TextInput onChangeText={(username) => this.setState({username})}/>
                    <Text style={{color:"#4A90E2",textAlign:'left',marginTop:20}} >Password</Text>
-                   <TextInput name='Input password' onChangeText={(text) => {
-                       this.password = text;
-                    }}/>
+                   <TextInput onChangeText={(password) => this.setState({password})}/>
             </View>
             <View style={styles.row}>
-                <TouchableOpacity style={styles.button} onPress={this._userRegister} underlayColor='#99d9f4'>
+                <TouchableOpacity style={styles.button} onPress={this._userRegister.bind(this)} underlayColor='#99d9f4'>
                   <Text style={styles.buttonText}>Register</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button} onPress={this._userLogin} underlayColor='#99d9f4'>
+                <TouchableOpacity style={styles.button} onPress={this._userLogin.bind(this)} underlayColor='#99d9f4'>
                   <Text style={styles.buttonText}>Login</Text>
                 </TouchableOpacity>
-                    <TouchableOpacity style={styles.forgetButton} onPress={this._userForget} underlayColor='#ffffff'>
+                    <TouchableOpacity style={styles.forgetButton} onPress={this._userForget.bind(this)} underlayColor='#ffffff'>
                   <Text style={styles.forgetButtonText}>Forget your password</Text>
                 </TouchableOpacity>
             </View>
+
         </View>
 
         );
