@@ -25,8 +25,24 @@ export default class Login extends Component {
         password: '',
     };
       }
-    _userLogin() {
+        _userLogin() {
+            const { username, password } = this.state;
+            let apiUrl = "http://quiet-harbor-89823.herokuapp.com/login?username=" + this.state.username + "&password=" + this.state.password
+    //let apiUrl = "http://quiet-harbor-89823.herokuapp.com/login?username=hi&password=123"
+                    fetch(apiUrl, {
+                      method: 'GET',
+                    }).then((response) => response.text())
+                .then((responseText) => {
+//                   alert(responseText);
+                   this._checkStatus(responseText);
+                }).done();
 
+        }
+    _checkStatus(responseText) {
+        if (responseText == "null") {
+            alert("Cannot find !")
+            }
+        else  alert("login success")
     }
      _userRegister() {
         const { username, password } = this.state;
